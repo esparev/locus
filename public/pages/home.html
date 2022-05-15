@@ -11,6 +11,11 @@
       rel="icon"
       href="../../src/img/location-update-48.png"
     />
+    <style>
+      .main {
+        height: 89vh;
+      }
+    </style>
     <title>Locus • Inicio</title>
   </head>
   <body>
@@ -188,6 +193,24 @@
         </div>
       </nav>
     </header>
+
+    <main class="bg-white main">
+      <section class="w-full h-full text-zinc-400 bg-zinc-900 body-font">
+        <div class="w-full h-full bg-zinc-900">
+          <iframe
+            title="map"
+            style="filter: grayscale(1) contrast(1.2) opacity(0.7)"
+            marginheight="0"
+            marginwidth="0"
+            scrolling="no"
+            src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=%C4%B0zmir+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+            width="100%"
+            height="100%"
+            frameborder="0"
+          ></iframe>
+        </div>
+      </section>
+    </main>
 
     <script src="../../node_modules/flowbite/dist/flowbite.js"></script>
   </body>
