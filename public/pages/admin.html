@@ -11,9 +11,15 @@
       rel="icon"
       href="../../src/img/location-update-48.png"
     />
+    <style>
+      .table,
+      .table-inputs {
+        max-width: 90%;
+      }
+    </style>
     <title>Locus • Admin</title>
   </head>
-  <body>
+  <body class="flex flex-col justify-between h-screen">
     <header>
       <nav class="bg-white shadow dark:bg-zinc-900">
         <div class="container px-6 py-4 mx-auto">
@@ -188,6 +194,118 @@
         </div>
       </nav>
     </header>
+
+    <main class="relative h-full px-5 overflow-x-auto bg-zinc-900">
+      <div class="p-4">
+        <label for="table-search" class="sr-only">Search</label>
+        <div class="relative mt-1">
+          <div
+            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+          >
+            <svg
+              class="w-5 h-5 text-zinc-500 dark:text-zinc-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+          <input
+            type="text"
+            id="table-search"
+            class="bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-80 pl-10 p-2.5 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+            placeholder="Search for items"
+          />
+        </div>
+      </div>
+      <div class="overflow-hidden rounded-lg">
+        <table
+          class="w-full text-sm text-left shadow-md text-zinc-500 dark:text-zinc-400"
+        >
+          <thead
+            class="text-xs uppercase text-zinc-700 bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400"
+          >
+            <tr>
+              <th scope="col" class="px-6 py-3">Lugar</th>
+              <th scope="col" class="px-6 py-3">Ciudad</th>
+              <th scope="col" class="px-6 py-3">País</th>
+              <th scope="col" class="px-6 py-3">Fecha</th>
+              <th scope="col" class="px-6 py-3">
+                <span class="sr-only">Edit</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="bg-white border-b dark:bg-zinc-800 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-600"
+            >
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-zinc-900 dark:text-white whitespace-nowrap"
+              >
+              Dalquharran Castle
+              </th>
+              <td class="px-6 py-4">Girvan</td>
+              <td class="px-6 py-4">UK</td>
+              <td class="px-6 py-4">$2999</td>
+              <td class="px-6 py-4 text-right">
+                <a
+                  href="#"
+                  class="font-medium text-red-600 dark:text-red-500 hover:underline focus:outline focus:outline-2 focus:outline-red-600"
+                  >Edit</a
+                >
+              </td>
+            </tr>
+            <tr
+              class="bg-white border-b dark:bg-zinc-800 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-600"
+            >
+              </td>
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-zinc-900 dark:text-white whitespace-nowrap"
+              >
+                Pripyat
+              </th>
+              <td class="px-6 py-4">Pripyat</td>
+              <td class="px-6 py-4">Ucrania</td>
+              <td class="px-6 py-4">$1999</td>
+              <td class="px-6 py-4 text-right">
+                <a
+                  href="#"
+                  class="font-medium text-red-600 dark:text-red-500 hover:underline focus:outline focus:outline-2 focus:outline-red-600"
+                  >Edit</a
+                >
+              </td>
+            </tr>
+            <tr
+              class="bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-600"
+            >
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-zinc-900 dark:text-white whitespace-nowrap"
+              >
+              Buzludzha
+              </th>
+              <td class="px-6 py-4">Buzludzha</td>
+              <td class="px-6 py-4">Bulgaria</td>
+              <td class="px-6 py-4">$99</td>
+              <td class="px-6 py-4 text-right">
+                <a
+                  href="#"
+                  class="font-medium text-red-600 dark:text-red-500 hover:underline focus:outline focus:outline-2 focus:outline-red-600"
+                  >Edit</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
 
     <footer
       class="p-4 bg-white shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-zinc-800"
