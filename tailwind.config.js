@@ -13,6 +13,11 @@ module.exports = {
         display: ["Inter", ...defaultTheme.fontFamily.sans],
         sans: ["Poppins", "Open Sans", ...defaultTheme.fontFamily.sans],
       },
+      minWidth: {
+        "5/16": "31.25%",
+        "9/19": "47.36%",
+        "5/6": "83.333333%",
+      },
     },
   },
   plugins: [require("flowbite/plugin")],
