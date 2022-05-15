@@ -1,0 +1,3 @@
+@tailwind base; /* Maneja los elementos de HTML */
+@tailwind components; /* Maneja las clases de Tailwind */
+@tailwind utilities; /* Maneja las utilidades de Tailwind */
