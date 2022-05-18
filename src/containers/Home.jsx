@@ -7,7 +7,14 @@ const Home = () => {
   return (
     <>
       <Header />
-      <Carousel />
+      <Carousel
+        title='Lugares Más Populares'
+        description='Conoce los lugares más populares de los últimos años visitados únicamente por aquellos que son más atrevidos y audaces.'
+      />
+      <Carousel
+        title='Lugares Embrujados'
+        description='No apto para cardiacos. Conoce los lugares embruajdos del mundo para vivir una experiencia fuera de este mundo, una experiencia con el más allá.'
+      />
       <Footer />
     </>
   );
