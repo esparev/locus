@@ -1,23 +1,23 @@
-const path = require("path");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: "production",
-  entry: "./src/index.js",
+  mode: 'production',
+  entry: './src/index.js',
 
   output: {
-    publicPath: "/",
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
-    assetModuleFilename: "assets/images/[hash][ext][query]",
+    publicPath: '/',
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'assets/images/[hash][ext][query]',
   },
 
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['.js', '.jsx'],
     alias: {
-      "@components": path.resolve(__dirname, "src/components/"),
-      "@containers": path.resolve(__dirname, "src/containers/"),
-      "@img": path.resolve(__dirname, "src/img/"),
+      '@components': path.resolve(__dirname, 'src/components/'),
+      '@containers': path.resolve(__dirname, 'src/containers/'),
+      '@img': path.resolve(__dirname, 'src/img/'),
     },
   },
 
@@ -27,28 +27,28 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
         },
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader",
+            loader: 'html-loader',
           },
         ],
       },
       {
         test: /\.(png|gif|jpg|svg|ico)$/,
-        type: "asset",
+        type: 'asset',
       },
     ],
   },
 
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./public/index.html",
-      filename: "./index.html",
+      template: './public/index.html',
+      filename: './index.html',
     }),
   ],
 
