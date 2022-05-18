@@ -4,9 +4,9 @@ const Footer = () => {
   return (
     <footer className='p-4 bg-white shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-zinc-800'>
       <span className='text-sm text-zinc-500 sm:text-center dark:text-zinc-400'>
-        © 2022
+        © 2022{' '}
         <a href='https://flowbite.com' className='hover:underline'>
-          Locus™
+          Locus™{' '}
         </a>
         Todos los derechos reservados.
       </span>
