@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CarouselItem = (props) => {
   const { image, title, description } = props;
@@ -15,7 +16,10 @@ const CarouselItem = (props) => {
         {title}
       </h2>
       <p className='mt-2 text-base leading-relaxed'>{description}</p>
-      <a className='inline-flex items-center mt-3 text-red-500'>
+      <Link
+        to='/lugares/pripyat'
+        className='inline-flex items-center mt-3 text-red-500'
+      >
         Ver Más
         <svg
           fill='none'
@@ -28,7 +32,7 @@ const CarouselItem = (props) => {
         >
           <path d='M5 12h14M12 5l7 7-7 7'></path>
         </svg>
-      </a>
+      </Link>
     </div>
   );
 };
