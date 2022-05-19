@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import oscar from '../img/oscar.jpg';
 
 const Header = () => {
@@ -9,12 +10,12 @@ const Header = () => {
           <div className='md:flex md:items-center md:justify-between'>
             <div className='flex items-center justify-between'>
               <div className='text-xl font-semibold text-zinc-700'>
-                <a
+                <Link
+                  to='/'
                   className='text-2xl font-bold transition-colors duration-200 transform font-display text-zinc-800 dark:text-white lg:text-3xl hover:text-zinc-700 dark:hover:text-zinc-300 focus:outline focus:outline-2 focus:outline-red-600'
-                  href='./home.html'
                 >
                   Locus
-                </a>
+                </Link>
               </div>
 
               {/* <!-- Mobile menu button --> */}
@@ -37,12 +38,12 @@ const Header = () => {
             {/* <!-- Mobile Menu open: "block", Menu closed: "hidden" --> */}
             <div className='flex-1 md:flex md:items-center md:justify-between'>
               <div className='flex flex-col -mx-4 md:flex-row md:items-center md:mx-8'>
-                <a
-                  href='./places.html'
+                <Link
+                  to='/lugares'
                   className='px-2 py-1 mx-2 mt-2 text-sm font-medium transition-colors duration-200 transform rounded-md text-zinc-700 md:mt-0 dark:text-zinc-200 hover:bg-zinc-300 dark:hover:bg-zinc-700 focus:outline focus:outline-2 focus:outline-red-600'
                 >
                   Más Lugares
-                </a>
+                </Link>
               </div>
 
               <div className='flex items-center mt-4 md:mt-0'>
@@ -105,8 +106,8 @@ const Header = () => {
                     </a>
                   </li>
                   <li>
-                    <a
-                      href='./admin.html'
+                    <Link
+                      to='/admin'
                       className='flex items-center px-4 py-2 transition-colors duration-200 transform hover:bg-zinc-100 dark:hover:bg-zinc-600 dark:hover:text-white'
                     >
                       <svg
@@ -125,7 +126,7 @@ const Header = () => {
                       </svg>
 
                       <span className='mx-1'>Administrar</span>
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <a
@@ -149,8 +150,8 @@ const Header = () => {
                   </li>
                 </ul>
                 <div className='py-1'>
-                  <a
-                    href='./login.html'
+                  <Link
+                    to='/login'
                     className='flex items-center px-4 py-2 text-sm transition-colors duration-200 transform text-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-600 dark:text-zinc-200 dark:hover:text-white'
                   >
                     <svg
@@ -166,7 +167,7 @@ const Header = () => {
                     </svg>
 
                     <span className='mx-1'>Cerrar sesión</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
