@@ -7,7 +7,7 @@ const Admin = () => {
     <div className='flex flex-col justify-between h-screen'>
       <Header />
 
-      <main className='relative h-full px-5 overflow-x-auto bg-zinc-900'>
+      <main className='relative h-full px-5 overflow-x-auto bg-white dark:bg-zinc-900'>
         <div className='md:flex md:items-center'>
           <div className='p-4'>
             <label htmlFor='table-search' className='sr-only'>
@@ -201,8 +201,8 @@ const Admin = () => {
         </div>
 
         <div className='overflow-hidden overflow-x-scroll rounded-lg md:overflow-x-hidden'>
-          <table className='w-full text-sm text-left shadow-md text-zinc-500 dark:text-zinc-400'>
-            <thead className='text-xs uppercase text-zinc-700 bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400'>
+          <table className='w-full text-sm text-left shadow-md text-zinc-700 dark:text-zinc-400'>
+            <thead className='text-xs uppercase text-zinc-700 bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-400'>
               <tr>
                 <th scope='col' className='px-6 py-3'>
                   Lugar
@@ -222,7 +222,7 @@ const Admin = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className='bg-white border-b dark:bg-zinc-800 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-600'>
+              <tr className='border-b bg-zinc-200 dark:bg-zinc-800 dark:border-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600'>
                 <th
                   scope='row'
                   className='px-6 py-4 font-medium text-zinc-900 dark:text-white whitespace-nowrap'
@@ -241,7 +241,7 @@ const Admin = () => {
                   </a>
                 </td>
               </tr>
-              <tr className='bg-white border-b dark:bg-zinc-800 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-600'>
+              <tr className='border-b bg-zinc-200 dark:bg-zinc-800 dark:border-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600'>
                 <th
                   scope='row'
                   className='px-6 py-4 font-medium text-zinc-900 dark:text-white whitespace-nowrap'
@@ -260,7 +260,7 @@ const Admin = () => {
                   </a>
                 </td>
               </tr>
-              <tr className='bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-600'>
+              <tr className='bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-600'>
                 <th
                   scope='row'
                   className='px-6 py-4 font-medium text-zinc-900 dark:text-white whitespace-nowrap'
