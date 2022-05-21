@@ -1,9 +1,26 @@
-## Integrantes
-- Jose Maria Esparza Arevalo
-- Jhonatan Brandon Reyes Rodriguez
-- Maria Guadalupe Paz Rojas
+## Autores
 
----
+- Jose Maria Esparza Arevalo - [@esparev](https://github.com/esparev)
+- Jhonatan Brandon Reyes Rodriguez - [@ElJhonyx](https://github.com/ElJhonyx)
+- Maria Guadalupe Paz Rojas - [@LPaz57](https://github.com/LPaz57)
 
-Para correr los estilos de TailwindCSS se necesita ejecutar el siguiente comando: 
-npx tailwindcss -i ./src/css/tailwind.css -o ./public/css/tailwind.css
+
+## Instalacion
+
+Instalar el projecto con npm
+
+```bash
+  npm i
+```
+
+Correr los estilos de TailwindCSS
+
+```bash
+  npx tailwindcss -i ./src/css/tailwind.css -o ./public/css/tailwind.css
+```
+
+Compilar el proyecto
+
+```bash
+  npm start
+```
