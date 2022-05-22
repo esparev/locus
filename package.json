@@ -2,7 +2,6 @@
   "name": "mapa-abandonado",
   "version": "2.0.5",
   "description": "Pagina que muestra lugares abandonados alrededor del mundo",
-  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
