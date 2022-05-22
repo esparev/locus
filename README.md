@@ -16,7 +16,7 @@ Instalar el projecto con npm
 Correr los estilos de TailwindCSS
 
 ```bash
-  npx tailwindcss -i ./src/css/tailwind.css -o ./public/css/tailwind.css
+  npx tailwindcss -i ./src/styles/input.css -o ./src/styles/tailwind.css
 ```
 
 Compilar el proyecto
