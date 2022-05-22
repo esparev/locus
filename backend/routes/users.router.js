@@ -13,31 +13,31 @@ router.get('/', (req, res) => {
 		});
 	}
 
-	res.json(users);
+	res.status(200).json(users);
 });
 
 // Ruta de usuario por id
 router.get('/:id', (req, res) => {
 	const user = {};
-	res.json(user);
+	res.status(200).json(user);
 });
 
 // Ruta de creación de usuario
 router.post('/', (req, res) => {
 	const body = req.body;
-	res.json({ data: body, message: 'Usuario creado' });
+	res.status(201).json({ data: body, message: 'Usuario creado' });
 });
 
 // Ruta de actualización de usuario
 router.patch('/:id', (req, res) => {
 	const { id } = req.params;
-	res.json({ id, message: 'Usuario actualizado' });
+	res.status(200).json({ id, message: 'Usuario actualizado' });
 });
 
 // Ruta de eliminación de usuario
 router.delete('/:id', (req, res) => {
 	const { id } = req.params;
-	res.json({ id, message: 'Usuario eliminado' });
+	res.status(200).json({ id, message: 'Usuario eliminado' });
 });
 
 module.exports = router;

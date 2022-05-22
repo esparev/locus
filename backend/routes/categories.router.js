@@ -13,31 +13,31 @@ router.get('/', (req, res) => {
 		});
 	}
 
-	res.json(categories);
+	res.status(200).json(categories);
 });
 
 // Ruta de categoría por id
 router.get('/:id', (req, res) => {
 	const category = {};
-	res.json(category);
+	res.status(200).json(category);
 });
 
 // Ruta de creación de categoría
 router.post('/', (req, res) => {
 	const body = req.body;
-	res.json({ data: body, message: 'Categoria creada' });
+	res.status(201).json({ data: body, message: 'Categoria creada' });
 });
 
 // Ruta de actualización de categoría
 router.patch('/:id', (req, res) => {
 	const { id } = req.params;
-	res.json({ id, message: 'Categoria actualizada' });
+	res.status(200).json({ id, message: 'Categoria actualizada' });
 });
 
 // Ruta de eliminación de categoría
 router.delete('/:id', (req, res) => {
 	const { id } = req.params;
-	res.json({ id, message: 'Categoria eliminada' });
+	res.status(200).json({ id, message: 'Categoria eliminada' });
 });
 
 module.exports = router;

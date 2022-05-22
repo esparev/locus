@@ -19,25 +19,25 @@ router.get('/', (req, res) => {
 // Ruta de lugar por id
 router.get('/:id', (req, res) => {
 	const place = {};
-	res.json(place);
+	res.status(200).json(place);
 });
 
 // Ruta de creación de lugar
 router.post('/', (req, res) => {
 	const body = req.body;
-	res.json({ data: body, message: 'Lugar creado' });
+	res.status(201).json({ data: body, message: 'Lugar creado' });
 });
 
 // Ruta de actualización de lugar
 router.patch('/:id', (req, res) => {
 	const { id } = req.params;
-	res.json({ id, message: 'Lugar actualizado' });
+	res.status(200).json({ id, message: 'Lugar actualizado' });
 });
 
 // Ruta de eliminación de lugar
 router.delete('/:id', (req, res) => {
 	const { id } = req.params;
-	res.json({ id, message: 'Lugar eliminado' });
+	res.status(200).json({ id, message: 'Lugar eliminado' });
 });
 
 module.exports = router;
