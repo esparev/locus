@@ -11,7 +11,7 @@ class UsersService {
 				name: 'Esparev',
 				email: 'esparev@hotmail.com',
 				password: 'invisible',
-				rol: 'hero',
+				role: 'hero',
 			},
 		];
 		this.generate();
@@ -51,7 +51,7 @@ class UsersService {
 		if (!user) {
 			throw boom.notFound('usuario no encontrado');
 		}
-		if (user.rol === 'hero') {
+		if (user.role === 'hero') {
 			throw boom.forbidden('no puedes ver este usuario');
 		}
 
@@ -89,7 +89,7 @@ class UsersService {
 
 		const user = this.users[index];
 
-		if (user.rol === 'hero') {
+		if (user.role === 'hero') {
 			throw boom.forbidden('no puedes actualizar este usuario');
 		}
 
@@ -113,7 +113,7 @@ class UsersService {
 		if (index === -1) {
 			throw boom.notFound('usuario no encontrado');
 		}
-		if (this.users[index].rol === 'hero') {
+		if (this.users[index].role === 'hero') {
 			throw boom.forbidden('no puedes eliminar este usuario');
 		}
 
