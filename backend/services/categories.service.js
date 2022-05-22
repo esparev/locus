@@ -1,3 +1,5 @@
+const boom = require('@hapi/boom');
+
 /**
  * Capa de servicio con métodos CRUD
  */
@@ -21,7 +23,13 @@ class CategoriesService {
 	 * @returns {Array} - Array con todas las categorias
 	 */
 	async find() {
-		return this.categories;
+		const categories = this.categories;
+
+		if (!categories) {
+			throw boom.notFound('no hay categorias');
+		}
+
+		return categories;
 	}
 
 	/**
@@ -30,7 +38,13 @@ class CategoriesService {
 	 * @returns {Object} - Objeto con la categoria
 	 */
 	async findOne(id) {
-		return this.categories.find((category) => category.id === id);
+		const category = this.categories.find((category) => category.id === id);
+
+		if (!category) {
+			throw boom.notFound('categoria no encontrada');
+		}
+
+		return category;
 	}
 
 	/**
@@ -59,10 +73,9 @@ class CategoriesService {
 		const index = this.categories.findIndex((category) => category.id === id);
 
 		if (index === -1) {
-			throw new Error('categoria no encontrada');
+			throw boom.notFound('categoria no encontrada');
 		}
 
-		const category = this.categories[index];
 		this.categories[index] = {
 			...category,
 			...changes,
@@ -81,7 +94,7 @@ class CategoriesService {
 		const index = this.categories.findIndex((category) => category.id === id);
 
 		if (index === -1) {
-			throw new Error('categoria no encontrada');
+			throw boom.notFound('categoria no encontrada');
 		}
 
 		this.categories.splice(index, 1);

@@ -1,9 +1,19 @@
+const boom = require('@hapi/boom');
+
 /**
  * Capa de servicio con métodos CRUD
  */
 class UsersService {
 	constructor() {
-		this.users = [];
+		this.users = [
+			{
+				id: 1,
+				name: 'Esparev',
+				email: 'esparev@hotmail.com',
+				password: 'invisible',
+				rol: 'hero',
+			},
+		];
 		this.generate();
 	}
 
@@ -21,7 +31,13 @@ class UsersService {
 	 * @returns {Array} - Array con todos los usuarios
 	 */
 	async find() {
-		return this.users;
+		const users = this.users;
+
+		if (!users) {
+			throw boom.notFound('no hay usuarios');
+		}
+
+		return users;
 	}
 
 	/**
@@ -30,7 +46,16 @@ class UsersService {
 	 * @returns {Object} - Objeto con el usuario
 	 */
 	async findOne(id) {
-		return this.users.find((user) => user.id === id);
+		const user = this.users.find((user) => user.id === id);
+
+		if (!user) {
+			throw boom.notFound('usuario no encontrado');
+		}
+		if (user.rol === 'hero') {
+			throw boom.forbidden('no puedes ver este usuario');
+		}
+
+		return user;
 	}
 
 	/**
@@ -59,10 +84,15 @@ class UsersService {
 		const index = this.users.findIndex((user) => user.id === id);
 
 		if (index === -1) {
-			throw new Error('usuario no encontrado');
+			throw boom.notFound('usuario no encontrado');
 		}
 
 		const user = this.users[index];
+
+		if (user.rol === 'hero') {
+			throw boom.forbidden('no puedes actualizar este usuario');
+		}
+
 		this.users[index] = {
 			...user,
 			...changes,
@@ -81,7 +111,10 @@ class UsersService {
 		const index = this.users.findIndex((user) => user.id === id);
 
 		if (index === -1) {
-			throw new Error('usuario no encontrado');
+			throw boom.notFound('usuario no encontrado');
+		}
+		if (this.users[index].rol === 'hero') {
+			throw boom.forbidden('no puedes eliminar este usuario');
 		}
 
 		this.users.splice(index, 1);

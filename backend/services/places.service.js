@@ -1,3 +1,5 @@
+const boom = require('@hapi/boom');
+
 /**
  * Capa de servicio con métodos CRUD
  */
@@ -21,7 +23,13 @@ class PlacesService {
 	 * @returns {Array} - Array con todos los lugares
 	 */
 	async find() {
-		return this.places;
+		const places = this.places;
+
+		if (!places) {
+			throw boom.notFound('no hay lugares');
+		}
+
+		return places;
 	}
 
 	/**
@@ -30,7 +38,13 @@ class PlacesService {
 	 * @returns {Object} - Objeto con el lugar
 	 */
 	async findOne(id) {
-		return this.places.find((place) => place.id === id);
+		const place = this.places.find((place) => place.id === id);
+
+		if (!place) {
+			throw boom.notFound('lugar no encontrado');
+		}
+
+		return place;
 	}
 
 	/**
@@ -59,10 +73,9 @@ class PlacesService {
 		const index = this.places.findIndex((place) => place.id === id);
 
 		if (index === -1) {
-			throw new Error('Place not found');
+			throw boom.notFound('lugar no encontrado');
 		}
 
-		const place = this.places[index];
 		this.places[index] = {
 			...place,
 			...changes,
@@ -81,7 +94,7 @@ class PlacesService {
 		const index = this.places.findIndex((place) => place.id === id);
 
 		if (index === -1) {
-			throw new Error('Place not found');
+			throw boom.notFound('lugar no encontrado');
 		}
 
 		this.places.splice(index, 1);
