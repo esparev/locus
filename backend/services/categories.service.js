@@ -20,7 +20,7 @@ class CategoriesService {
 	 * Encuentra todas las categorias en el array de objetos
 	 * @returns {Array} - Array con todas las categorias
 	 */
-	find() {
+	async find() {
 		return this.categories;
 	}
 
@@ -29,7 +29,7 @@ class CategoriesService {
 	 * @param {*} id - id de la categoria
 	 * @returns {Object} - Objeto con la categoria
 	 */
-	findOne(id) {
+	async findOne(id) {
 		return this.categories.find((category) => category.id === id);
 	}
 
@@ -38,7 +38,7 @@ class CategoriesService {
 	 * @param {*} data - datos de la categoria
 	 * @returns {Object} - Objeto con la categoria creada
 	 */
-	create(data) {
+	async create(data) {
 		const newCategory = {
 			id: this.categories.length + 1,
 			name: data.name,
@@ -55,7 +55,7 @@ class CategoriesService {
 	 * @returns {Object} - Objeto con la categoria actualizada
 	 * @throws {Error} - Error si no se encuentra la categoria
 	 */
-	update(id, changes) {
+	async update(id, changes) {
 		const index = this.categories.findIndex((category) => category.id === id);
 
 		if (index === -1) {
@@ -77,7 +77,7 @@ class CategoriesService {
 	 * @returns {Object} - Objeto con la categoria eliminada
 	 * @throws {Error} - Error si no se encuentra la categoria
 	 */
-	delete(id) {
+	async delete(id) {
 		const index = this.categories.findIndex((category) => category.id === id);
 
 		if (index === -1) {

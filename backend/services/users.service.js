@@ -20,7 +20,7 @@ class UsersService {
 	 * Encuentra todos los usuarios en el array de objetos
 	 * @returns {Array} - Array con todos los usuarios
 	 */
-	find() {
+	async find() {
 		return this.users;
 	}
 
@@ -29,7 +29,7 @@ class UsersService {
 	 * @param {*} id - id del usuario
 	 * @returns {Object} - Objeto con el usuario
 	 */
-	findOne(id) {
+	async findOne(id) {
 		return this.users.find((user) => user.id === id);
 	}
 
@@ -38,7 +38,7 @@ class UsersService {
 	 * @param {*} data - datos del usuario
 	 * @returns {Object} - Objeto con el usuario creado
 	 */
-	create(data) {
+	async create(data) {
 		const newUser = {
 			id: this.users.length + 1,
 			name: data.name,
@@ -55,7 +55,7 @@ class UsersService {
 	 * @returns {Object} - Objeto con el usuario actualizado
 	 * @throws {Error} - Error si no se encuentra el usuario
 	 */
-	update(id, changes) {
+	async update(id, changes) {
 		const index = this.users.findIndex((user) => user.id === id);
 
 		if (index === -1) {
@@ -77,7 +77,7 @@ class UsersService {
 	 * @returns {Object} - Objeto con el usuario eliminado
 	 * @throws {Error} - Error si no se encuentra el usuario
 	 */
-	delete(id) {
+	async delete(id) {
 		const index = this.users.findIndex((user) => user.id === id);
 
 		if (index === -1) {
