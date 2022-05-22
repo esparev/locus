@@ -1,10 +1,16 @@
 const express = require('express');
 const UsersService = require('./services/users.service');
 
-const router = express.Router({ mergeParams: true });
+const router = express.Router();
 const service = new UsersService();
 
-// Ruta principal de usuarios
+/**
+ * Ruta principal de usuarios
+ * @api {get} /users Listar usuarios
+ * @apiName ListarUsuarios
+ * @apiGroup Usuarios
+ * @apiSuccess {Object[]} Lista de usuarios
+ */
 router.get('/', async (req, res, next) => {
 	try {
 		const users = await service.find();
@@ -14,7 +20,12 @@ router.get('/', async (req, res, next) => {
 	}
 });
 
-// Ruta de usuario por id
+/**
+ * @api {get} /users/:id Obtener usuario
+ * @apiName ObtenerUsuario
+ * @apiGroup Usuarios
+ * @apiSuccess {Object} Usuario obtenido
+ */
 router.get('/:id', async (req, res, next) => {
 	try {
 		const { id } = req.params;
@@ -25,14 +36,26 @@ router.get('/:id', async (req, res, next) => {
 	}
 });
 
-// Ruta de creación de usuario
+/**
+ * Ruta de creación de usuario
+ * @api {post} /users Crear usuario
+ * @apiName CrearUsuario
+ * @apiGroup Usuarios
+ * @apiSuccess {Object} Usuario creado
+ */
 router.post('/', async (req, res) => {
 	const body = req.body;
 	const newUser = await service.create(body);
 	res.status(201).json({ data: body, newUser, message: 'usuario creado' });
 });
 
-// Ruta de actualización de usuario
+/**
+ * Ruta de actualización de usuario
+ * @api {patch} /users/:id Actualizar usuario
+ * @apiName ActualizarUsuario
+ * @apiGroup Usuarios
+ * @apiSuccess {Object} Usuario actualizado
+ */
 router.patch('/:id', async (req, res, next) => {
 	try {
 		const { id } = req.params;
@@ -46,7 +69,13 @@ router.patch('/:id', async (req, res, next) => {
 	}
 });
 
-// Ruta de eliminación de usuario
+/**
+ * Ruta de eliminación de usuario
+ * @api {delete} /users/:id Eliminar usuario
+ * @apiName EliminarUsuario
+ * @apiGroup Usuarios
+ * @apiSuccess {Object} Usuario eliminado
+ */
 router.delete('/:id', async (req, res, next) => {
 	try {
 		const { id } = req.params;

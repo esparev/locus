@@ -1,10 +1,16 @@
 const express = require('express');
 const CategoriesService = require('./services/categories.service');
 
-const router = express.Router({ mergeParams: true });
+const router = express.Router();
 const service = new CategoriesService();
 
-// Ruta principal de categorías
+/**
+ * Ruta principal de categorías
+ * @api {get} /categories Listar categorías
+ * @apiName ListarCategorías
+ * @apiGroup Categorías
+ * @apiSuccess {Object[]} Lista de categorías
+ */
 router.get('/', async (req, res, next) => {
 	try {
 		const categories = await service.find();
@@ -14,7 +20,13 @@ router.get('/', async (req, res, next) => {
 	}
 });
 
-// Ruta de categoría por id
+/**
+ * Ruta de categoría por id
+ * @api {get} /categories/:id Obtener categoría
+ * @apiName ObtenerCategoría
+ * @apiGroup Categorías
+ * @apiSuccess {Object} Categoría obtenida
+ */
 router.get('/:id', async (req, res, next) => {
 	try {
 		const { id } = req.params;
@@ -25,7 +37,13 @@ router.get('/:id', async (req, res, next) => {
 	}
 });
 
-// Ruta de creación de categoría
+/**
+ * Ruta de creación de categoría
+ * @api {post} /categories Crear categoría
+ * @apiName CrearCategoría
+ * @apiGroup Categorías
+ * @apiSuccess {Object} Categoría creada
+ */
 router.post('/', async (req, res) => {
 	const body = req.body;
 	const newCategory = await service.create(body);
@@ -34,7 +52,13 @@ router.post('/', async (req, res) => {
 		.json({ data: body, newCategory, message: 'categoria creada' });
 });
 
-// Ruta de actualización de categoría
+/**
+ * Ruta de actualización de categoría
+ * @api {patch} /categories/:id Actualizar categoría
+ * @apiName ActualizarCategoría
+ * @apiGroup Categorías
+ * @apiSuccess {Object} Categoría actualizada
+ */
 router.patch('/:id', async (req, res, next) => {
 	try {
 		const { id } = req.params;
@@ -51,7 +75,13 @@ router.patch('/:id', async (req, res, next) => {
 	}
 });
 
-// Ruta de eliminación de categoría
+/**
+ * Ruta de eliminación de categoría
+ * @api {delete} /categories/:id Eliminar categoría
+ * @apiName EliminarCategoría
+ * @apiGroup Categorías
+ * @apiSuccess {Object} Categoría eliminada
+ */
 router.delete('/:id', async (req, res, next) => {
 	try {
 		const { id } = req.params;

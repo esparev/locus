@@ -1,10 +1,16 @@
 const express = require('express');
 const PlacesService = require('./services/places.service');
 
-const router = express.Router({ mergeParams: true });
+const router = express.Router();
 const service = new PlacesService();
 
-// Ruta principal de lugares
+/**
+ * Ruta principal de lugares
+ * @api {get} /places Listar lugares
+ * @apiName ListarLugares
+ * @apiGroup Lugares
+ * @apiSuccess {Object[]} Lista de lugares
+ */
 router.get('/', async (req, res, next) => {
 	try {
 		const places = await service.find();
@@ -14,7 +20,13 @@ router.get('/', async (req, res, next) => {
 	}
 });
 
-// Ruta de lugar por id
+/**
+ * Ruta de lugar por id
+ * @api {get} /places/:id Obtener lugar
+ * @apiName ObtenerLugar
+ * @apiGroup Lugares
+ * @apiSuccess {Object} Lugar obtenido
+ */
 router.get('/:id', async (req, res, next) => {
 	try {
 		const { id } = req.params;
@@ -25,14 +37,26 @@ router.get('/:id', async (req, res, next) => {
 	}
 });
 
-// Ruta de creación de lugar
+/**
+ * Ruta de creación de lugar
+ * @api {post} /places Crear lugar
+ * @apiName CrearLugar
+ * @apiGroup Lugares
+ * @apiSuccess {Object} Lugar creado
+ */
 router.post('/', async (req, res) => {
 	const body = req.body;
 	const newPlace = await service.create(body);
 	res.status(201).json({ data: body, newPlace, message: 'lugar creado' });
 });
 
-// Ruta de actualización de lugar
+/**
+ * Ruta de actualización de lugar
+ * @api {patch} /places/:id Actualizar lugar
+ * @apiName ActualizarLugar
+ * @apiGroup Lugares
+ * @apiSuccess {Object} Lugar actualizado
+ */
 router.patch('/:id', async (req, res, next) => {
 	try {
 		const { id } = req.params;
@@ -46,7 +70,13 @@ router.patch('/:id', async (req, res, next) => {
 	}
 });
 
-// Ruta de eliminación de lugar
+/**
+ * Ruta de eliminación de lugar
+ * @api {delete} /places/:id Eliminar lugar
+ * @apiName EliminarLugar
+ * @apiGroup Lugares
+ * @apiSuccess {Object} Lugar eliminado
+ */
 router.delete('/:id', async (req, res, next) => {
 	try {
 		const { id } = req.params;
