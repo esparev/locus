@@ -1,16 +1,4 @@
 /**
- * Maneja los errores de la aplicación y los envía al siguiente middleware
- * @param {*} err - Error que se ha producido
- * @param {*} req - Request que se ha producido
- * @param {*} res - Response que se ha producido
- * @param {*} next - Middleware que se ejecuta después de este
- */
-function logErrors(err, req, res, next) {
-	console.error(err.stack);
-	next(err);
-}
-
-/**
  * Maneja los errores de la aplicación y los envía al cliente
  * @param {*} err - Error que se ha producido
  * @param {*} req - Request que se ha producido
@@ -40,4 +28,4 @@ function boomErrorHandler(err, req, res, next) {
 	}
 }
 
-module.exports = { logErrors, errorHandler, boomErrorHandler };
+module.exports = { errorHandler, boomErrorHandler };
