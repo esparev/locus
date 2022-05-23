@@ -3,6 +3,12 @@ const PlacesService = require('./services/places.service');
 
 const router = express.Router();
 const service = new PlacesService();
+const validatorHandler = require('../middlewares/validator.handler');
+const {
+	getPlaceSchema,
+	createPlaceSchema,
+	updatePlaceSchema,
+} = require('../schemas/places.schema');
 
 /**
  * Ruta principal de lugares
@@ -27,15 +33,19 @@ router.get('/', async (req, res, next) => {
  * @apiGroup Lugares
  * @apiSuccess {Object} Lugar obtenido
  */
-router.get('/:id', async (req, res, next) => {
-	try {
-		const { id } = req.params;
-		const place = await service.findOne(id);
-		res.status(200).json(place);
-	} catch (error) {
-		next(error);
+router.get(
+	'/:id',
+	validatorHandler(getPlaceSchema, 'params'),
+	async (req, res, next) => {
+		try {
+			const { id } = req.params;
+			const place = await service.findOne(id);
+			res.status(200).json(place);
+		} catch (error) {
+			next(error);
+		}
 	}
-});
+);
 
 /**
  * Ruta de creación de lugar
@@ -44,11 +54,15 @@ router.get('/:id', async (req, res, next) => {
  * @apiGroup Lugares
  * @apiSuccess {Object} Lugar creado
  */
-router.post('/', async (req, res) => {
-	const body = req.body;
-	const newPlace = await service.create(body);
-	res.status(201).json({ data: body, newPlace, message: 'lugar creado' });
-});
+router.post(
+	'/',
+	validatorHandler(createPlaceSchema, 'body'),
+	async (req, res) => {
+		const body = req.body;
+		const newPlace = await service.create(body);
+		res.status(201).json({ newPlace, message: 'lugar creado' });
+	}
+);
 
 /**
  * Ruta de actualización de lugar
@@ -57,18 +71,21 @@ router.post('/', async (req, res) => {
  * @apiGroup Lugares
  * @apiSuccess {Object} Lugar actualizado
  */
-router.patch('/:id', async (req, res, next) => {
-	try {
-		const { id } = req.params;
-		const { body } = req.body;
-		const updatedPlace = await service.update(id, body);
-		res
-			.status(200)
-			.json({ id, data: body, updatedPlace, message: 'lugar actualizado' });
-	} catch (error) {
-		next(error);
+router.patch(
+	'/:id',
+	validatorHandler(getPlaceSchema, 'params'),
+	validatorHandler(updatePlaceSchema, 'params'),
+	async (req, res, next) => {
+		try {
+			const { id } = req.params;
+			const { body } = req.body;
+			const updatedPlace = await service.update(id, body);
+			res.status(200).json({ updatedPlace, message: 'lugar actualizado' });
+		} catch (error) {
+			next(error);
+		}
 	}
-});
+);
 
 /**
  * Ruta de eliminación de lugar
@@ -81,7 +98,7 @@ router.delete('/:id', async (req, res, next) => {
 	try {
 		const { id } = req.params;
 		const deletedPlace = await service.delete(id);
-		res.status(200).json({ id, deletedPlace, message: 'lugar eliminado' });
+		res.status(200).json({ deletedPlace, message: 'lugar eliminado' });
 	} catch (error) {
 		next(error);
 	}
