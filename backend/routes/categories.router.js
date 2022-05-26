@@ -1,5 +1,5 @@
 const express = require('express');
-const CategoriesService = require('./services/categories.service');
+const CategoriesService = require('../services/categories.service');
 
 const router = express.Router();
 const service = new CategoriesService();
@@ -8,7 +8,7 @@ const {
 	getCategorySchema,
 	createCategorySchema,
 	updateCategorySchema,
-} = require('../schemas/categories.schema');
+} = require('../schemas/category.schema');
 
 /**
  * Ruta principal de categorías

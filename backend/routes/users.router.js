@@ -1,5 +1,5 @@
 const express = require('express');
-const UsersService = require('./services/users.service');
+const UsersService = require('../services/users.service');
 
 const router = express.Router();
 const service = new UsersService();
@@ -8,7 +8,7 @@ const {
 	getUserSchema,
 	createUserSchema,
 	updateUserSchema,
-} = require('../schemas/users.schema');
+} = require('../schemas/user.schema');
 
 /**
  * Ruta principal de usuarios

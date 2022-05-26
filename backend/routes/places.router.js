@@ -1,5 +1,5 @@
 const express = require('express');
-const PlacesService = require('./services/places.service');
+const PlacesService = require('../services/places.service');
 
 const router = express.Router();
 const service = new PlacesService();
@@ -8,7 +8,7 @@ const {
 	getPlaceSchema,
 	createPlaceSchema,
 	updatePlaceSchema,
-} = require('../schemas/places.schema');
+} = require('../schemas/place.schema');
 
 /**
  * Ruta principal de lugares
