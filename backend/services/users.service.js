@@ -1,43 +1,20 @@
 const boom = require('@hapi/boom');
+const sequelize = require('../libs/sequelize');
 
 /**
  * Capa de servicio con métodos CRUD
  */
 class UsersService {
-	constructor() {
-		this.users = [
-			{
-				id: 1,
-				name: 'Esparev',
-				email: 'esparev@hotmail.com',
-				password: 'invisible',
-				role: 'hero',
-			},
-		];
-		this.generate();
-	}
-
-	generate() {
-		for (let i = 0; i < 10; i++) {
-			this.users.push({
-				id: i,
-				name: `Usuario ${i}`,
-			});
-		}
-	}
+	constructor() {}
 
 	/**
 	 * Encuentra todos los usuarios en el array de objetos
 	 * @returns {Array} - Array con todos los usuarios
 	 */
 	async find() {
-		const users = this.users;
-
-		if (!users) {
-			throw boom.notFound('no hay usuarios');
-		}
-
-		return users;
+		const query = 'SELECT * FROM public.user';
+		const [data] = await sequelize.query(query);
+		return data;
 	}
 
 	/**
