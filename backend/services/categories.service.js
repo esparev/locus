@@ -22,7 +22,13 @@ class CategoriesService {
 	 * @returns {Object} - Objeto con la categoria
 	 */
 	async findOne(id) {
-		return { id };
+		const category = await models.Category.findByPk(id);
+
+		if (!category) {
+			throw boom.notFound('categoria no encontrada');
+		}
+
+		return category;
 	}
 
 	/**
@@ -31,7 +37,8 @@ class CategoriesService {
 	 * @returns {Object} - Objeto con la categoria creada
 	 */
 	async create(data) {
-		return data;
+		const newCategory = await models.Category.create(data);
+		return newCategory;
 	}
 
 	/**
@@ -43,7 +50,9 @@ class CategoriesService {
 	 * @throws {Error} - Error si no se encuentra la categoria
 	 */
 	async update(id, changes) {
-		return { id, changes };
+		const category = await this.findOne(id);
+		const response = await category.update(changes);
+		return response;
 	}
 
 	/**
@@ -53,6 +62,8 @@ class CategoriesService {
 	 * @throws {Error} - Error si no se encuentra la categoria
 	 */
 	async delete(id) {
+		const category = await this.findOne(id);
+		await category.destroy();
 		return { id };
 	}
 }

@@ -22,7 +22,13 @@ class PlacesService {
 	 * @returns {Object} - Objeto con el lugar
 	 */
 	async findOne(id) {
-		return { id };
+		const place = await models.Place.findByPk(id);
+
+		if (!place) {
+			throw boom.notFound('lugar no encontrado');
+		}
+
+		return place;
 	}
 
 	/**
@@ -31,7 +37,8 @@ class PlacesService {
 	 * @returns {Object} - Objeto con el lugar creado
 	 */
 	async create(data) {
-		return data;
+		const newPlace = await models.Place.create(data);
+		return newPlace;
 	}
 
 	/**
@@ -43,7 +50,9 @@ class PlacesService {
 	 * @throws {Error} - Error si no se encuentra el lugar
 	 */
 	async update(id, changes) {
-		return { id, changes };
+		const place = await this.findOne(id);
+		const response = await place.update(changes);
+		return response;
 	}
 
 	/**
@@ -53,6 +62,8 @@ class PlacesService {
 	 * @throws {Error} - Error si no se encuentra el lugar
 	 */
 	async delete(id) {
+		const place = await this.findOne(id);
+		await place.destroy();
 		return { id };
 	}
 }

@@ -22,7 +22,13 @@ class UsersService {
 	 * @returns {Object} - Objeto con el usuario
 	 */
 	async findOne(id) {
-		return { id };
+		const user = await models.User.findByPk(id);
+
+		if (!user) {
+			throw boom.notFound('usuario no encontrado');
+		}
+
+		return user;
 	}
 
 	/**
@@ -31,7 +37,8 @@ class UsersService {
 	 * @returns {Object} - Objeto con el usuario creado
 	 */
 	async create(data) {
-		return data;
+		const newUser = await models.User.create(data);
+		return newUser;
 	}
 
 	/**
@@ -43,7 +50,9 @@ class UsersService {
 	 * @throws {Error} - Error si no se encuentra el usuario
 	 */
 	async update(id, changes) {
-		return { id, changes };
+		const user = await this.findOne(id);
+		const response = await user.update(changes);
+		return response;
 	}
 
 	/**
@@ -53,6 +62,8 @@ class UsersService {
 	 * @throws {Error} - Error si no se encuentra el usuario
 	 */
 	async delete(id) {
+		const user = await this.findOne(id);
+		await user.destroy();
 		return { id };
 	}
 }
