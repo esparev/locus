@@ -1,7 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
+const { PLACE_TABLE } = require('./place.model');
 
 // Nombre de la tabla de la base de datos
 const CATEGORY_TABLE = 'category';
+const { PLACE_TABLE } = require('./place.model');
 
 /**
  * @class Category
@@ -25,6 +27,18 @@ const CategorySchema = {
 	name: {
 		allowNull: false,
 		type: DataTypes.STRING(100),
+	},
+	placeId: {
+		allowNull: false,
+		field: 'place_id',
+		unique: true,
+		type: DataTypes.INTEGER,
+		references: {
+			model: PLACE_TABLE,
+			key: 'id',
+		},
+		onUpdate: 'CASCADE',
+		onDelete: 'SET NULL',
 	},
 };
 
