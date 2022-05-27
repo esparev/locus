@@ -16,7 +16,7 @@ class CategoriesService {
 
 	/**
 	 * Encuentra la categoria con el id proporcionado
-	 * @param {*} id - id de la categoria
+	 * @param {number} id - id de la categoria
 	 * @returns {Object} - Objeto con la categoria
 	 */
 	async findOne(id) {
@@ -35,7 +35,7 @@ class CategoriesService {
 	/**
 	 * Actualiza parcialmente la categoria con el id proporcionado
 	 * con los datos proporcionados
-	 * @param {*} id - id de la categoria
+	 * @param {number} id - id de la categoria
 	 * @param {*} changes - datos de la categoria
 	 * @returns {Object} - Objeto con la categoria actualizada
 	 * @throws {Error} - Error si no se encuentra la categoria
@@ -46,7 +46,7 @@ class CategoriesService {
 
 	/**
 	 * Elimina la categoria con el id proporcionado
-	 * @param {*} id - id de la categoria
+	 * @param {number} id - id de la categoria
 	 * @returns {Object} - Objeto con la categoria eliminada
 	 * @throws {Error} - Error si no se encuentra la categoria
 	 */

@@ -17,7 +17,7 @@ class UsersService {
 
 	/**
 	 * Encuentra el usuario con el id proporcionado
-	 * @param {*} id - id del usuario
+	 * @param {number} id - id del usuario
 	 * @returns {Object} - Objeto con el usuario
 	 */
 	async findOne(id) {
@@ -36,7 +36,7 @@ class UsersService {
 	/**
 	 * Actualiza parcialmente el usuario con el id proporcionado
 	 * con los datos proporcionados
-	 * @param {*} id - id del usuario
+	 * @param {number} id - id del usuario
 	 * @param {*} changes - datos del usuario
 	 * @returns {Object} - Objeto con el usuario actualizado
 	 * @throws {Error} - Error si no se encuentra el usuario
@@ -47,7 +47,7 @@ class UsersService {
 
 	/**
 	 * Elimina el usuario con el id proporcionado
-	 * @param {*} id - id del usuario
+	 * @param {number} id - id del usuario
 	 * @returns {Object} - Objeto con el usuario eliminado
 	 * @throws {Error} - Error si no se encuentra el usuario
 	 */

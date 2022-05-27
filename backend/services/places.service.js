@@ -16,7 +16,7 @@ class PlacesService {
 
 	/**
 	 * Encuentra el lugar con el id proporcionado
-	 * @param {*} id - id del lugar
+	 * @param {number} id - id del lugar
 	 * @returns {Object} - Objeto con el lugar
 	 */
 	async findOne(id) {
@@ -35,7 +35,7 @@ class PlacesService {
 	/**
 	 * Actualiza parcialmente el lugar con el id proporcionado
 	 * con los datos proporcionados
-	 * @param {*} id - id del lugar
+	 * @param {number} id - id del lugar
 	 * @param {*} changes - datos del lugar
 	 * @returns {Object} - Objeto con el lugar actualizado
 	 * @throws {Error} - Error si no se encuentra el lugar
@@ -46,7 +46,7 @@ class PlacesService {
 
 	/**
 	 * Elimina el lugar con el id proporcionado
-	 * @param {*} id - id del lugar
+	 * @param {number} id - id del lugar
 	 * @returns {Object} - Objeto con el lugar eliminado
 	 * @throws {Error} - Error si no se encuentra el lugar
 	 */
