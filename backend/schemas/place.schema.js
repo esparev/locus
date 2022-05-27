@@ -21,22 +21,22 @@ const createPlaceSchema = Joi.object({
 	description: description.required(),
 	country: country.required(),
 	city: city.required(),
-	image: image,
-	createdAt: createdAt,
-	rating: rating,
-	dangerLevel: dangerLevel,
+	image,
+	createdAt,
+	rating,
+	dangerLevel,
 });
 
 const updatePlaceSchema = Joi.object({
-	name: name,
-	slug: slug,
-	description: description,
-	country: country,
-	city: city,
-	image: image,
-	createdAt: createdAt,
-	rating: rating,
-	dangerLevel: dangerLevel,
+	name,
+	slug,
+	description,
+	country,
+	city,
+	image,
+	createdAt,
+	rating,
+	dangerLevel,
 });
 
 module.exports = { getPlaceSchema, createPlaceSchema, updatePlaceSchema };

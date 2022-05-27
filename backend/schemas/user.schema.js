@@ -18,16 +18,16 @@ const createUserSchema = Joi.object({
 	email: email.required(),
 	password: password.required(),
 	role: role.required(),
-	image: image,
+	image,
 });
 
 const updateUserSchema = Joi.object({
-	name: name,
-	slug: slug,
-	email: email,
-	password: password,
-	role: role,
-	image: image,
+	name,
+	slug,
+	email,
+	password,
+	role,
+	image,
 });
 
 module.exports = { getUserSchema, createUserSchema, updateUserSchema };

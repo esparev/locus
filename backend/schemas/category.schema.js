@@ -16,9 +16,9 @@ const createCategorySchema = Joi.object({
 });
 
 const updateCategorySchema = Joi.object({
-	name: name,
-	slug: slug,
-	placeId: placeId,
+	name,
+	slug,
+	placeId,
 });
 
 module.exports = {
