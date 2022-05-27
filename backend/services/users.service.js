@@ -1,5 +1,5 @@
 const boom = require('@hapi/boom');
-const sequelize = require('../libs/sequelize');
+const { models } = require('../libs/sequelize');
 
 /**
  * Capa de servicio con métodos CRUD
@@ -12,9 +12,8 @@ class UsersService {
 	 * @returns {Array} - Array con todos los usuarios
 	 */
 	async find() {
-		const query = 'SELECT * FROM public.user';
-		const [data] = await sequelize.query(query);
-		return data;
+		const response = await models.User.findAll();
+		return response;
 	}
 
 	/**
