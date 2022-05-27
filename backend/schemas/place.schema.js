@@ -1,6 +1,7 @@
 const Joi = require('joi');
 
 const id = Joi.number().integer().min(1);
+const slug = Joi.string().min(1).max(255);
 const name = Joi.string().min(1).max(255);
 const description = Joi.string().min(1).max(1000);
 const country = Joi.string().min(1).max(255);
@@ -16,6 +17,7 @@ const getPlaceSchema = Joi.object({
 
 const createPlaceSchema = Joi.object({
 	name: name.required(),
+	slug: slug.required(),
 	description: description.required(),
 	country: country.required(),
 	city: city.required(),
@@ -27,6 +29,7 @@ const createPlaceSchema = Joi.object({
 
 const updatePlaceSchema = Joi.object({
 	name: name,
+	slug: slug,
 	description: description,
 	country: country,
 	city: city,
