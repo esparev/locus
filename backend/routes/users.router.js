@@ -57,9 +57,13 @@ router.post(
 	'/',
 	validatorHandler(createUserSchema, 'body'),
 	async (req, res) => {
-		const body = req.body;
-		const newUser = await service.create(body);
-		res.status(201).json({ newUser, message: 'usuario creado' });
+		try {
+			const body = req.body;
+			const newUser = await service.create(body);
+			res.status(201).json({ newUser, message: 'usuario creado' });
+		} catch (error) {
+			next(error);
+		}
 	}
 );
 

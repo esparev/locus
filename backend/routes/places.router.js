@@ -58,9 +58,13 @@ router.post(
 	'/',
 	validatorHandler(createPlaceSchema, 'body'),
 	async (req, res) => {
-		const body = req.body;
-		const newPlace = await service.create(body);
-		res.status(201).json({ newPlace, message: 'lugar creado' });
+		try {
+			const body = req.body;
+			const newPlace = await service.create(body);
+			res.status(201).json({ newPlace, message: 'lugar creado' });
+		} catch (error) {
+			next(error);
+		}
 	}
 );
 
