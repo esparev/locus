@@ -7,7 +7,7 @@ const description = Joi.string().min(1).max(1000);
 const country = Joi.string().min(1).max(255);
 const city = Joi.string().min(1).max(255);
 const image = Joi.string().uri();
-const date = Joi.string().isoDate();
+const createdAt = Joi.string().isoDate();
 const rating = Joi.number().integer().min(1).max(1);
 const dangerLevel = Joi.number().integer().min(1).max(1);
 
@@ -22,7 +22,7 @@ const createPlaceSchema = Joi.object({
 	country: country.required(),
 	city: city.required(),
 	image: image,
-	date: date,
+	createdAt: createdAt,
 	rating: rating,
 	dangerLevel: dangerLevel,
 });
@@ -34,7 +34,7 @@ const updatePlaceSchema = Joi.object({
 	country: country,
 	city: city,
 	image: image,
-	date: date,
+	createdAt: createdAt,
 	rating: rating,
 	dangerLevel: dangerLevel,
 });
