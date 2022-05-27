@@ -4,32 +4,14 @@ const boom = require('@hapi/boom');
  * Capa de servicio con métodos CRUD
  */
 class CategoriesService {
-	constructor() {
-		this.categories = [];
-		this.generate();
-	}
-
-	generate() {
-		for (let i = 0; i < 10; i++) {
-			this.categories.push({
-				id: i,
-				name: `Categoria ${i}`,
-			});
-		}
-	}
+	constructor() {}
 
 	/**
 	 * Encuentra todas las categorias en el array de objetos
 	 * @returns {Array} - Array con todas las categorias
 	 */
 	async find() {
-		const categories = this.categories;
-
-		if (!categories) {
-			throw boom.notFound('no hay categorias');
-		}
-
-		return categories;
+		return [];
 	}
 
 	/**
@@ -38,13 +20,7 @@ class CategoriesService {
 	 * @returns {Object} - Objeto con la categoria
 	 */
 	async findOne(id) {
-		const category = this.categories.find((category) => category.id === id);
-
-		if (!category) {
-			throw boom.notFound('categoria no encontrada');
-		}
-
-		return category;
+		return { id };
 	}
 
 	/**
@@ -53,12 +29,7 @@ class CategoriesService {
 	 * @returns {Object} - Objeto con la categoria creada
 	 */
 	async create(data) {
-		const newCategory = {
-			id: this.categories.length + 1,
-			name: data.name,
-		};
-		this.categories.push(newCategory);
-		return newCategory;
+		return data;
 	}
 
 	/**
@@ -70,18 +41,7 @@ class CategoriesService {
 	 * @throws {Error} - Error si no se encuentra la categoria
 	 */
 	async update(id, changes) {
-		const index = this.categories.findIndex((category) => category.id === id);
-
-		if (index === -1) {
-			throw boom.notFound('categoria no encontrada');
-		}
-
-		this.categories[index] = {
-			...category,
-			...changes,
-		};
-
-		return this.categories[index];
+		return { id, changes };
 	}
 
 	/**
@@ -91,13 +51,6 @@ class CategoriesService {
 	 * @throws {Error} - Error si no se encuentra la categoria
 	 */
 	async delete(id) {
-		const index = this.categories.findIndex((category) => category.id === id);
-
-		if (index === -1) {
-			throw boom.notFound('categoria no encontrada');
-		}
-
-		this.categories.splice(index, 1);
 		return { id };
 	}
 }
