@@ -1,4 +1,4 @@
-const { Model, DataTypes, Sequelize } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 
 // Nombre de la tabla de la base de datos
 const USER_TABLE = 'user';
@@ -45,6 +45,7 @@ const UserSchema = {
 	},
 	image: {
 		allowNull: true,
+		defaultValue: 'https://image.com',
 		type: DataTypes.STRING,
 	},
 };

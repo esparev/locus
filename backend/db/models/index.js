@@ -1,4 +1,6 @@
 const { User, UserSchema } = require('./user.model');
+const { Place, PlaceSchema } = require('./place.model');
+const { Category, CategorySchema } = require('./category.model');
 
 /**
  * Configura todos los modelos de la base de datos
@@ -7,6 +9,8 @@ const { User, UserSchema } = require('./user.model');
  */
 function setupModels(sequelize) {
 	User.init(UserSchema, User.config(sequelize));
+	Place.init(PlaceSchema, Place.config(sequelize));
+	Category.init(CategorySchema, Category.config(sequelize));
 }
 
 module.exports = setupModels;

@@ -1,4 +1,5 @@
 const boom = require('@hapi/boom');
+const { models } = require('../libs/sequelize');
 
 /**
  * Capa de servicio con métodos CRUD
@@ -11,7 +12,8 @@ class PlacesService {
 	 * @returns {Array} - Array con todos los lugares
 	 */
 	async find() {
-		return [];
+		const response = await models.Place.findAll();
+		return response;
 	}
 
 	/**

@@ -1,4 +1,5 @@
 const boom = require('@hapi/boom');
+const { models } = require('../libs/sequelize');
 
 /**
  * Capa de servicio con métodos CRUD
@@ -11,7 +12,8 @@ class CategoriesService {
 	 * @returns {Array} - Array con todas las categorias
 	 */
 	async find() {
-		return [];
+		const response = await models.Category.findAll();
+		return response;
 	}
 
 	/**

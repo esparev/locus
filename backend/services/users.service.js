@@ -12,7 +12,8 @@ class UsersService {
 	 * @returns {Array} - Array con todos los usuarios
 	 */
 	async find() {
-		return [];
+		const response = await models.User.findAll();
+		return response;
 	}
 
 	/**
