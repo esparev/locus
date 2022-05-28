@@ -68,6 +68,14 @@ const PlaceSchema = {
 };
 
 class Place extends Model {
+	static associate(models) {
+		// Relacion de uno a muchos (1-N) entre lugar y categorias
+		this.hasMany(models.Category, {
+			as: 'categories',
+			foreignKey: 'placeId',
+		});
+	}
+
 	/**
 	 * @param {*} sequelize - Instancia de Sequelize
 	 * @property {any} sequelize - coneccion tipo ORM

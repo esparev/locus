@@ -46,6 +46,11 @@ const CategorySchema = {
  * @class Category
  */
 class Category extends Model {
+	static associate(model) {
+		// Relacion uno a uno (1-1) entre categoria y lugar
+		this.belongsTo(model.Place, { as: 'place' });
+	}
+
 	/**
 	 *
 	 * @param {*} sequelize - Instancia de Sequelize
