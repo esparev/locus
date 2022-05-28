@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, Sequelize } = require('sequelize');
 
 // Nombre de la tabla de la base de datos
 const PLACE_TABLE = 'place';

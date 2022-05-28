@@ -13,7 +13,6 @@ function setupModels(sequelize) {
 	Category.init(CategorySchema, Category.config(sequelize));
 
 	// Iniciar las relaciones
-	User.associate(sequelize.models);
 	Place.associate(sequelize.models);
 	Category.associate(sequelize.models);
 }
