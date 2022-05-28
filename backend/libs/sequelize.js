@@ -14,12 +14,4 @@ const sequelize = new Sequelize(URI, {
 
 setupModels(sequelize);
 
-/**
- * Con los modelos creados, sync creara
- * una estrcutura de tablas en la base de datos
- * a seguir dependiendo de la configuracion
- * del esquema de configuracion
- */
-sequelize.sync()
-
 module.exports = sequelize;
