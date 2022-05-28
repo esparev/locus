@@ -12,8 +12,8 @@ class PlacesService {
 	 * @returns {Array} - Array con todos los lugares
 	 */
 	async find() {
-		const response = await models.Place.findAll();
-		return response;
+		const places = await models.Place.findAll();
+		return places;
 	}
 
 	/**
