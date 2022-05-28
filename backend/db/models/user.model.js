@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
+const boom = require('@hapi/boom');
 
 // Nombre de la tabla de la base de datos
 const USER_TABLE = 'user';
@@ -34,6 +35,9 @@ const UserSchema = {
 		allowNull: false,
 		unique: true,
 		type: DataTypes.STRING(100),
+		validate: {
+			isEmail: true,
+		},
 	},
 	password: {
 		allowNull: false,
@@ -42,6 +46,14 @@ const UserSchema = {
 	role: {
 		allowNull: false,
 		type: DataTypes.STRING(100),
+		defaultValue: 'user',
+		validate: {
+			isHero(value) {
+				if (value === 'hero') {
+					throw boom.forbidden('No esta permitido esta accion');
+				}
+			},
+		},
 	},
 	image: {
 		allowNull: true,
@@ -56,9 +68,9 @@ const UserSchema = {
 class User extends Model {
 	/**
 	 * @param {*} sequelize - Instancia de Sequelize
-   * @property {any} sequelize - coneccion tipo ORM
-   * @property {string} tableName - Nombre de la tabla
-   * @property {string} modelName - Nombre del modelo
+	 * @property {any} sequelize - coneccion tipo ORM
+	 * @property {string} tableName - Nombre de la tabla
+	 * @property {string} modelName - Nombre del modelo
 	 * @returns la configuración del modelo
 	 */
 	static config(sequelize) {

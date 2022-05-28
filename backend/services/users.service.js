@@ -27,6 +27,9 @@ class UsersService {
 		if (!user) {
 			throw boom.notFound('usuario no encontrado');
 		}
+		if (user.role === 'hero') {
+			throw boom.forbidden('No esta permitido esta accion');
+		}
 
 		return user;
 	}
