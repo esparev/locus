@@ -12,7 +12,9 @@ class CategoriesService {
 	 * @returns {Array} - Array con todas las categorias
 	 */
 	async find() {
-		const response = await models.Category.findAll();
+		const response = await models.Category.findAll({
+			include: ['place'],
+		});
 		return response;
 	}
 
