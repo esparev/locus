@@ -18,6 +18,19 @@ class UsersService {
 	}
 
 	/**
+	 * Encuentra el usuario con el email proporcionado
+	 * @param {string} email - email del usuario
+	 * @returns {Object} - Objeto con el usuario encontrado
+	 */
+	async findByEmail(email) {
+		const user = await models.User.findOne({
+			where: { email },
+		});
+
+		return user;
+	}
+
+	/**
 	 * Encuentra el usuario con el id proporcionado
 	 * @param {number} id - id del usuario
 	 * @returns {Object} - Objeto con el usuario
