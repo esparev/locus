@@ -13,6 +13,7 @@ require('dotenv').config();
  * @property {string} dbUrl - Url de la base de datos
  * @property {string} databaseUrl - Url de la base de datos
  * @property {string} apiKey - ApiKey de la aplicacion
+ * @property {string} jwtSecret - JsonWebToken secret
  */
 const config = {
 	env: process.env.NODE_ENV || 'dev',
@@ -26,6 +27,7 @@ const config = {
 	dbUrl: process.env.DB_URL,
 	databaseUrl: process.env.DATABASE_URL,
 	apiKey: process.env.API_KEY,
+	jwtSecret: process.env.JWT_SECRET,
 };
 
 module.exports = { config };
