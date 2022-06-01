@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const boom = require('@hapi/boom');
 const { models } = require('../libs/sequelize');
 
@@ -36,11 +37,20 @@ class UsersService {
 
 	/**
 	 * Crea un usuario con los datos proporcionados
+	 * y encripta la contraseña con el metodo hash
 	 * @param {*} data - datos del usuario
 	 * @returns {Object} - Objeto con el usuario creado
 	 */
 	async create(data) {
-		const newUser = await models.User.create(data);
+		const hash = await bcrypt.hash(data.password, 13);
+
+		const newUser = await models.User.create({
+			...data,
+			password: hash,
+		});
+
+		delete newUser.dataValues.password;
+
 		return newUser;
 	}
 
