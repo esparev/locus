@@ -12,6 +12,7 @@ require('dotenv').config();
  * @property {string} dbPassword - Contraseña de la base de datos
  * @property {string} dbUrl - Url de la base de datos
  * @property {string} databaseUrl - Url de la base de datos
+ * @property {string} apiKey - ApiKey de la aplicacion
  */
 const config = {
 	env: process.env.NODE_ENV || 'dev',
@@ -24,6 +25,7 @@ const config = {
 	dbPassword: process.env.DB_PASSWORD,
 	dbUrl: process.env.DB_URL,
 	databaseUrl: process.env.DATABASE_URL,
+	apiKey: process.env.API_KEY,
 };
 
 module.exports = { config };

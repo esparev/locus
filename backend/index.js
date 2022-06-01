@@ -2,6 +2,7 @@ const express = require('express');
 const routerApi = require('./routes');
 const cors = require('cors');
 
+const { checkApiKey } = require('./middlewares/auth.handler');
 const {
 	errorHandler,
 	boomErrorHandler,
@@ -10,6 +11,10 @@ const {
 
 const app = express();
 const port = 3000;
+
+app.get('/', checkApiKey, (req, res) => {
+	res.send('LOCUS API');
+});
 
 app.use(cors());
 app.use(express.json());
