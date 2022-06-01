@@ -1,15 +1,20 @@
+const express = require('express');
+
 const authRouter = require('./auth.router');
-const homeRouter = require('./home.router');
 const usersRouter = require('./users.router');
 const placesRouter = require('./places.router');
 const categoriesRouter = require('./categories.router');
 
 function routerApi(app) {
-  app.use('/', homeRouter);
-	app.use('/api/users', usersRouter);
-	app.use('/api/places', placesRouter);
-	app.use('/api/categories', categoriesRouter);
-	app.use('/api/auth', authRouter);
+	const router = express.Router();
+
+	// Ruta padre
+	app.use('/api/v1', router);
+	// Rutas hijos
+	app.use('/users', usersRouter);
+	app.use('/places', placesRouter);
+	app.use('/categories', categoriesRouter);
+	app.use('/auth', authRouter);
 }
 
 module.exports = routerApi;
