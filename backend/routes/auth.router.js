@@ -1,8 +1,9 @@
 const express = require('express');
 const passport = require('passport');
-const jwt = require('jsonwebtoken');
-const { config } = require('../config/config');
+const AuthService = require('../services/auth.service');
+
 const router = express.Router();
+const service = new AuthService();
 
 /**
  * Ruta de login
@@ -16,21 +17,25 @@ router.post(
 	async (req, res, next) => {
 		try {
 			const user = req.user;
-			const payload = {
-				// Asunto para identificar al usuario
-				sub: user.id,
-				// Permisos del usuario
-				scope: user.role,
-			};
-			const token = jwt.sign(payload, config.jwtSecret);
-			res.status(201).json({
-				user,
-				token,
-			});
+			res.status(201).json(service.signToken(user));
 		} catch (error) {
 			next(error);
 		}
 	}
 );
+
+/**
+ * Ruta de recuperacion de contraseña
+ * Envia un correo con el link para cambiar la contraseña
+ */
+router.post('/recuperar', async (req, res, next) => {
+	try {
+		const { email } = req.body;
+		const response = await service.sendRecovery(email);
+		res.json(response);
+	} catch (error) {
+		next(error);
+	}
+});
 
 module.exports = router;

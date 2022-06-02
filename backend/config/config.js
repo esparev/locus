@@ -14,6 +14,8 @@ require('dotenv').config();
  * @property {string} databaseUrl - Url de la base de datos
  * @property {string} apiKey - ApiKey de la aplicacion
  * @property {string} jwtSecret - JsonWebToken secret
+ * @property {string} smtpEmail - Email de envio de correos
+ * @property {string} smtpPassword - Contraseña del email de envio de correos
  */
 const config = {
 	env: process.env.NODE_ENV || 'dev',
@@ -28,6 +30,8 @@ const config = {
 	databaseUrl: process.env.DATABASE_URL,
 	apiKey: process.env.API_KEY,
 	jwtSecret: process.env.JWT_SECRET,
+	smtpEmail: process.env.SMTP_EMAIL,
+	smtpPassword: process.env.SMTP_PASSWORD,
 };
 
 module.exports = { config };

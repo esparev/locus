@@ -46,7 +46,7 @@ class UsersService {
 			throw boom.notFound('usuario no encontrado');
 		}
 		if (user.role === 'hero') {
-			throw boom.forbidden('No esta permitido esta accion');
+			throw boom.unauthorized('No esta permitido esta accion');
 		}
 
 		return user;
