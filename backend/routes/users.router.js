@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 const UsersService = require('../services/users.service');
 
 const router = express.Router();
@@ -55,6 +56,7 @@ router.get(
  */
 router.post(
 	'/',
+	passport.authenticate('jwt', { session: false }),
 	validatorHandler(createUserSchema, 'body'),
 	async (req, res, next) => {
 		try {
@@ -76,6 +78,7 @@ router.post(
  */
 router.patch(
 	'/:id',
+	passport.authenticate('jwt', { session: false }),
 	validatorHandler(getUserSchema, 'params'),
 	validatorHandler(updateUserSchema, 'body'),
 	async (req, res, next) => {
@@ -97,14 +100,18 @@ router.patch(
  * @apiGroup Usuarios
  * @apiSuccess {Object} Usuario eliminado
  */
-router.delete('/:id', async (req, res, next) => {
-	try {
-		const { id } = req.params;
-		const deletedUser = await service.delete(id);
-		res.status(200).json({ deletedUser, message: 'usuario eliminado' });
-	} catch (error) {
-		next(error);
+router.delete(
+	'/:id',
+	passport.authenticate('jwt', { session: false }),
+	async (req, res, next) => {
+		try {
+			const { id } = req.params;
+			const deletedUser = await service.delete(id);
+			res.status(200).json({ deletedUser, message: 'usuario eliminado' });
+		} catch (error) {
+			next(error);
+		}
 	}
-});
+);
 
 module.exports = router;

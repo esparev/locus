@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 const PlacesService = require('../services/places.service');
 
 const router = express.Router();
@@ -56,6 +57,7 @@ router.get(
  */
 router.post(
 	'/',
+	passport.authenticate('jwt', { session: false }),
 	validatorHandler(createPlaceSchema, 'body'),
 	async (req, res) => {
 		try {
@@ -77,6 +79,7 @@ router.post(
  */
 router.patch(
 	'/:id',
+	passport.authenticate('jwt', { session: false }),
 	validatorHandler(getPlaceSchema, 'params'),
 	validatorHandler(updatePlaceSchema, 'params'),
 	async (req, res, next) => {
@@ -98,14 +101,18 @@ router.patch(
  * @apiGroup Lugares
  * @apiSuccess {Object} Lugar eliminado
  */
-router.delete('/:id', async (req, res, next) => {
-	try {
-		const { id } = req.params;
-		const deletedPlace = await service.delete(id);
-		res.status(200).json({ deletedPlace, message: 'lugar eliminado' });
-	} catch (error) {
-		next(error);
+router.delete(
+	'/:id',
+	passport.authenticate('jwt', { session: false }),
+	async (req, res, next) => {
+		try {
+			const { id } = req.params;
+			const deletedPlace = await service.delete(id);
+			res.status(200).json({ deletedPlace, message: 'lugar eliminado' });
+		} catch (error) {
+			next(error);
+		}
 	}
-});
+);
 
 module.exports = router;

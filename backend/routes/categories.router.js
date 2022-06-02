@@ -56,6 +56,7 @@ router.get(
  */
 router.post(
 	'/',
+	passport.authenticate('jwt', { session: false }),
 	validatorHandler(createCategorySchema, 'body'),
 	async (req, res) => {
 		try {
@@ -77,6 +78,7 @@ router.post(
  */
 router.patch(
 	'/:id',
+	passport.authenticate('jwt', { session: false }),
 	validatorHandler(getCategorySchema, 'params'),
 	validatorHandler(updateCategorySchema, 'body'),
 	async (req, res, next) => {
@@ -101,14 +103,18 @@ router.patch(
  * @apiGroup Categorías
  * @apiSuccess {Object} Categoría eliminada
  */
-router.delete('/:id', async (req, res, next) => {
-	try {
-		const { id } = req.params;
-		const deletedCategory = await service.delete(id);
-		res.status(200).json({ deletedCategory, message: 'categoria eliminada' });
-	} catch (error) {
-		next(error);
+router.delete(
+	'/:id',
+	passport.authenticate('jwt', { session: false }),
+	async (req, res, next) => {
+		try {
+			const { id } = req.params;
+			const deletedCategory = await service.delete(id);
+			res.status(200).json({ deletedCategory, message: 'categoria eliminada' });
+		} catch (error) {
+			next(error);
+		}
 	}
-});
+);
 
 module.exports = router;
