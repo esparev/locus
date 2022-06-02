@@ -25,6 +25,7 @@ const UserSchema = {
 	},
 	slug: {
 		allowNull: false,
+		unique: true,
 		type: DataTypes.STRING(100),
 	},
 	name: {
