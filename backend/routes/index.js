@@ -11,10 +11,10 @@ function routerApi(app) {
 	// Ruta padre
 	app.use('/api/v1', router);
 	// Rutas hijos
-	app.use('/users', usersRouter);
-	app.use('/places', placesRouter);
-	app.use('/categories', categoriesRouter);
-	app.use('/auth', authRouter);
+	router.use('/users', usersRouter);
+	router.use('/places', placesRouter);
+	router.use('/categories', categoriesRouter);
+	router.use('/auth', authRouter);
 }
 
 module.exports = routerApi;
