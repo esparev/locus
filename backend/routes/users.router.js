@@ -60,7 +60,29 @@ router.post(
 	async (req, res, next) => {
 		try {
 			const body = req.body;
-			const newUser = await service.create(body);
+			const newUser = await service.createUser(body);
+			res.status(201).json({ newUser, message: 'usuario creado' });
+		} catch (error) {
+			next(error);
+		}
+	}
+);
+
+/**
+ * Ruta de creación de administradores
+ * @api {post} /users Crear administrador
+ * @apiName CrearUsuario
+ * @apiGroup Usuarios
+ * @apiSuccess {Object} Admin creado
+ */
+router.post(
+	'/admin',
+	passport.authenticate('jwt', { session: false }),
+	validatorHandler(createUserSchema, 'body'),
+	async (req, res, next) => {
+		try {
+			const body = req.body;
+			const newUser = await service.createAdmin(body);
 			res.status(201).json({ newUser, message: 'usuario creado' });
 		} catch (error) {
 			next(error);

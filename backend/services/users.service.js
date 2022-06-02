@@ -58,8 +58,12 @@ class UsersService {
 	 * @param {*} data - datos del usuario
 	 * @returns {Object} - Objeto con el usuario creado
 	 */
-	async create(data) {
+	async createUser(data) {
 		const hash = await bcrypt.hash(data.password, 13);
+
+		if (data.role === 'admin') {
+			throw boom.unauthorized('No esta permitido esta accion');
+		}
 
 		const newUser = await models.User.create({
 			...data,
@@ -69,6 +73,25 @@ class UsersService {
 		delete newUser.dataValues.password;
 
 		return newUser;
+	}
+
+	/**
+	 * Crea un administrador con los datos proporcionados
+	 * y encripta la contraseña con el metodo hash
+	 * @param {*} data - datos del admin
+	 * @returns {Object} - Objeto con el admin creado
+	 */
+	async createAdmin(data) {
+		const hash = await bcrypt.hash(data.password, 13);
+
+		const newAdmin = await models.User.create({
+			...data,
+			password: hash,
+		});
+
+		delete newAdmin.dataValues.password;
+
+		return newAdmin;
 	}
 
 	/**
