@@ -1,6 +1,6 @@
 const { Strategy } = require('passport-local');
-const UsersService = require('../../../services/users.service');
-const service = new UsersService();
+const AuthService = require('../../../services/auth.service');
+const service = new AuthService();
 
 /**
  * Estrategia local de passportjs con varias validaciones
