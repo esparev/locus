@@ -27,6 +27,10 @@ class UsersService {
 			where: { email },
 		});
 
+		if (!user) {
+			throw boom.notFound('usuario no encontrado');
+		}
+
 		return user;
 	}
 
