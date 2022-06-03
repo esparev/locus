@@ -19,7 +19,22 @@ app.get('/', (req, res) => {
 
 app.use(passport.initialize());
 app.use(express.json());
-app.use(cors());
+
+const whitelist = [
+	'http://localhost:3000',
+	'http://127.0.0.1:3000',
+];
+const options = {
+	origin: (origin, callback) => {
+		if (whitelist.includes(origin) || !origin) {
+			callback(null, true);
+		} else {
+			callback(new Error('No permitido'));
+		}
+	},
+};
+
+app.use(cors(options));
 
 routerApi(app);
 
