@@ -128,6 +128,9 @@ class AuthService {
 			const user = await service.findOne(payload.sub);
 
 			if (user.recoveryToken !== token) {
+				console.log('token invalido');
+				console.log("recoveryTOken", user.recoveryToken);
+				console.log("token", token);
 				throw boom.unauthorized();
 			}
 
@@ -136,6 +139,7 @@ class AuthService {
 
 			return { message: 'Contraseña modificada' };
 		} catch (error) {
+			console.log(error);
 			throw boom.unauthorized();
 		}
 	}

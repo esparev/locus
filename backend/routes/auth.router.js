@@ -38,4 +38,18 @@ router.post('/recuperar', async (req, res, next) => {
 	}
 });
 
+/**
+ * Ruta de cambio de contraseña
+ * Recupera la contraseña con el correo
+ */
+router.post('/cambiar-contra', async (req, res, next) => {
+	try {
+		const { token, newPassword } = req.body;
+		const response = await service.changePassword(token, newPassword);
+		res.json(response);
+	} catch (error) {
+		next(error);
+	}
+});
+
 module.exports = router;
