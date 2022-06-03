@@ -4,7 +4,6 @@ const cors = require('cors');
 const passport = require('passport');
 require('./utils/auth');
 
-const { checkApiKey } = require('./middlewares/auth.handler');
 const {
 	errorHandler,
 	boomErrorHandler,
@@ -14,7 +13,7 @@ const {
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get('/', checkApiKey, (req, res) => {
+app.get('/', (req, res) => {
 	res.send('LOCUS API');
 });
 
