@@ -50,7 +50,10 @@ class AuthService {
 			// Permiso del usuario
 			scope: user.role,
 		};
+		
 		const token = jwt.sign(payload, config.jwtSecret);
+		delete admin.dataValues.recoveryToken;
+
 		return {
 			user,
 			token,

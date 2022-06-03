@@ -71,6 +71,7 @@ class UsersService {
 		});
 
 		delete newUser.dataValues.password;
+		delete newUser.dataValues.recoveryToken;
 
 		return newUser;
 	}
