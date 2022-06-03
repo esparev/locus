@@ -61,6 +61,11 @@ const UserSchema = {
 		defaultValue: 'https://image.com',
 		type: DataTypes.STRING,
 	},
+	recoveryToken: {
+		allowNull: true,
+		field: 'recovery_token',
+		type: DataTypes.STRING,
+	},
 };
 
 /**
