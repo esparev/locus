@@ -11,7 +11,7 @@ const {
 } = require('./middlewares/error.handler');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3003;
 
 app.get('/', (req, res) => {
 	res.send('LOCUS API');
@@ -23,6 +23,8 @@ app.use(express.json());
 const whitelist = [
 	'http://localhost:3000',
 	'http://127.0.0.1:3000',
+	'http://localhost:3006',
+	'http://127.0.0.1:3006',
 ];
 const options = {
 	origin: (origin, callback) => {

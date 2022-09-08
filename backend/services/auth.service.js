@@ -52,7 +52,7 @@ class AuthService {
 		};
 		
 		const token = jwt.sign(payload, config.jwtSecret);
-		delete admin.dataValues.recoveryToken;
+		delete user.dataValues.recoveryToken;
 
 		return {
 			user,
